@@ -6,6 +6,8 @@ Uses python and R to download all Fishbase images of a user-specified family,
 then sorts out standardized (full body lateral view, relatively uniform background) 
 images for easy digitization. The pipeline follows 5 steps after you give it a fish family:
 
-1) Downloads all images of that fish family that have confirmed identifications from Fishbase using Scrapy in python (http://scrapy.org/).
+1) Downloads all images of that fish family that have confirmed identifications from Fishbase using Scrapy in python (http://scrapy.org/). Crawls species pages for photographs. See 'fishbase' folder.
 
-2) Sorts images into 'Pass' or 'Fail' categories based on regionalized color histogram indices, 
+2) Sorts images into 'Pass' or 'Fail' categories based on regionalized color histogram indices with OpenCV in python (http://opencv.org/). See 'Sorting.py' script. Image classification parameters are explained in 'Image Sorting' section.
+
+3) Fetches list of all species in family and outputs list of species for which no images were available with the format FamilyName_missingSpecies.csv.
