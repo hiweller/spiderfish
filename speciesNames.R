@@ -60,6 +60,9 @@ if (length(species[(species %in% jsonSpecies)==FALSE])==0){
 
 write.csv(x=speciesURLDF, row.names=FALSE,
           file=speciesURL)
+
+message("")
+
 if (length(species[(species %in% jsonSpecies)==TRUE])==1) {
   message(paste(length(species[(species %in% jsonSpecies)==TRUE]),
                 " species has at least one image.", sep=""))
@@ -82,4 +85,5 @@ if (dim(failOnlyDF)[1]==0){
             file=failOnly)
 }
 
+message("")
 message(paste("Corresponding species and image names are saved in ", speciesURL, ".", sep=""))
