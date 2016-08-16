@@ -85,7 +85,7 @@ You can also call different pieces of the pipeline separately, for example if yo
 
 # Image Sorting
 
-How is 'Sorting.py' deciding which images to pass, and which to fail? Because fish have such a wide variety of body forms and colors, rather than train it to look for fish, python sorts images based on other, more easily calculated images.
+How is 'Sorting.py' deciding which images to pass, and which to fail? 
 
 
 
