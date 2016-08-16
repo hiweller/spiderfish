@@ -77,13 +77,15 @@ Entering 'y' will display all the images in the 'Pass' folder.
 You can also call different pieces of the pipeline separately, for example if you want to scrape images but not sort them, or sort images in a different folder, etc. This is most easily accomplished by copying the commands for these separate steps as specified in the pipeline scripts, and substituting your own arguments.
 
 # Requirements
-Python 2.7+
-R 3.0+
-OpenCV 2.4+ ([Here's a nice installation tutorial for OpenCV 3](http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/))
-Scrapy 1.1+ ([Scrapy installation guide](http://doc.scrapy.org/en/latest/intro/install.html))
-Rfishbase ([CRAN documentation](https://cran.r-project.org/web/packages/rfishbase/rfishbase.pdf)
+* Python 2.7+
+* R 3.0+
+* OpenCV 2.4+ ([A nice installation tutorial for OpenCV 3](http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/), or just do `$ brew install opencv3 --with-contrib`)
+* Scrapy 1.1+ ([Scrapy installation guide](http://doc.scrapy.org/en/latest/intro/install.html))
+* Rfishbase ([CRAN documentation](https://cran.r-project.org/web/packages/rfishbase/rfishbase.pdf))
 
 # Image Sorting
+
+How is 'Sorting.py' deciding which images to pass, and which to fail? Because fish have such a wide variety of body forms and colors, rather than train it to look for fish, python sorts images based on other, more easily calculated images.
 
 
 
