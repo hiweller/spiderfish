@@ -8,7 +8,7 @@ images for easy digitization. The pipeline follows 4 steps after you give it a f
 
 1) Downloads all images of that fish family that have confirmed identifications from Fishbase using Scrapy in python (http://scrapy.org/). Crawls species pages for photographs. See 'fishbase' folder.
 
-2) Sorts images into 'Pass' or 'Fail' categories based on regionalized color histogram indices with OpenCV in python (http://opencv.org/). See 'Sorting.py' script. Image classification parameters are explained in 'Image Sorting' section.
+2) Sorts images into 'Pass' or 'Fail' categories based on regionalized color histogram indices with OpenCV in python (http://opencv.org/). See 'Sorting.py' script. Image classification parameters are explained in 'Image Sorting' page on the Wiki. Which is also the only page on the Wiki. Go hard.
 
 3) Fetches a list of all species in family from Fishbase using the rfishbase package in R (https://github.com/ropensci/rfishbase).
 
@@ -82,10 +82,6 @@ You can also call different pieces of the pipeline separately, for example if yo
 * OpenCV 2.4+ ([A nice installation tutorial for OpenCV 3](http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/), or just do `$ brew install opencv3 --with-contrib`)
 * Scrapy 1.1+ ([Scrapy installation guide](http://doc.scrapy.org/en/latest/intro/install.html))
 * Rfishbase ([CRAN documentation](https://cran.r-project.org/web/packages/rfishbase/rfishbase.pdf))
-
-# Image Sorting
-
-How is 'Sorting.py' deciding which images to pass, and which to fail? 
 
 
 
