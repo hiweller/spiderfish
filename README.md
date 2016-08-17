@@ -17,6 +17,12 @@ images for easy digitization. The pipeline follows 4 steps after you give it a f
 The results are stored in a directory specified by the user, in a 'FamilyName/' folder. The folder has 3 subfolders: 'Pass', 'Fail', and 'All', which contain images passed by the classifier, images rejected by the classifier, and duplicates of all images in case you don't care about the classification, respectively. The folder also contains a JSON file with all the image URLs, image names, and species names, as well as the generated CSV files.
 
 # Usage
+
+To clone the repository onto your computer:
+```bash
+git clone https://github.com/nitlon/spiderfish
+```
+
 The pipeline is run through a simple shell script that just calls the steps above in the right order. There are two options for running it:
 
 1) Add the 'spiderFish' command in 'bash_profile_pipeline.sh' to your bash profile (instructions are in the script).
