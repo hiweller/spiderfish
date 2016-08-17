@@ -1,5 +1,7 @@
 # spiderfish 0.0.1
-Pipeline for downloading and sorting Fishbase images.
+Pipeline for downloading and sorting Fishbase images.  
+* Author: Hannah Weller  
+* Email: hannahiweller@gmail.com
 
 # About
 Uses python and R to download all Fishbase images of a user-specified family, 
