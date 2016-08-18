@@ -50,23 +50,28 @@ class FishSpider(scrapy.Spider):
         import unicodedata
 
         table = response.xpath("//form//tr/td/text()").extract()
-        table = table[9:22]
-
         table2 = []
+        linecount = 0
+        size = 0
 
         for line in table:
             line = line.replace('\n', '')
             line = line.replace('\t', '')
             line = line.replace('\r', '')
             line = unicodedata.normalize('NFKD', line).encode('ascii', 'ignore')
+            linecount = linecount + 1
+
+            if line=="Size (cm):":
+                size=linecount
+
             table2.append(line)
+
+        size = table2[size]
 
         thumb = response.xpath("//img/@src[contains(., 'species')]").extract_first()
         thumb = response.urljoin(thumb)
-
         species = response.xpath("//tr/td/center/i/a/text()").extract_first()
-
-        yield FishItem(species=species, image=[thumb], table=table2)
+        yield FishItem(species=species, image=[thumb], size=size)
 
     def spider_closed(self, spider):
         if spider is not self:

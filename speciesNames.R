@@ -1,4 +1,3 @@
-# setwd('/Users/hannah/Dropbox/Westneat_Lab/OpenCV_Sandbox/spiderFish/')
 args <- commandArgs(trailingOnly = TRUE)
 setwd(paste(args[2], '/', args[1], sep=''))
 
@@ -23,15 +22,16 @@ missingSpeciesDF <- data.frame(Species = species[(species %in% jsonSpecies)==FAL
 # _ + (u, f, m, j as applicable for unidentified/female/male/juvenile) + number + .jpg
 # just list out species and pic URL from JSON file and format as CSV
 picSpecies <- pictures$species # list of species names from JSON file
-picURL <- unlist(pictures$image_urls) # URLs from JSON file (some duplicates)
+picURL <- unlist(pictures$image) # URLs from JSON file (some duplicates)
 picURL <- substr(picURL, nchar(picURL)-11, nchar(picURL)) # get just relevant part of url
+picSize <- unlist(pictures$size)
 
 allPath <- dir(paste(args[2], '/', args[1], '/All', sep=""), pattern = '*.jpg')
 
 speciesURL <- paste(args[2], '/', args[1], '/', args[1], '_speciesURLs.csv', sep="")
 
 # only keep image urls that got used as permanent URLs in saving
-speciesURLDF <- data.frame(Image=picURL, Species=picSpecies)
+speciesURLDF <- data.frame(Image=picURL, Species=picSpecies, Size.cm=picSize)
 speciesURLDF <- speciesURLDF[picURL %in% allPath, ]
 speciesURLDF <- speciesURLDF[order(speciesURLDF$Image),]
 
