@@ -20,5 +20,5 @@ class fishImagesPipeline(ImagesPipeline):
 		return 'full/%s' % (image_guide)
 
 	def get_media_requests(self, item, info):
-		for image in item['image_urls']:
+		for image in item['image']:
 			yield Request(image)
