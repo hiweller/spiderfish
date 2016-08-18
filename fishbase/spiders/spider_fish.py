@@ -47,15 +47,26 @@ class FishSpider(scrapy.Spider):
             yield scrapy.Request(link_url, self.parse_picture)
 
     def parse_picture(self, response):
+        import unicodedata
+
         table = response.xpath("//form//tr/td/text()").extract()
         table = table[9:22]
+
+        table2 = []
+
+        for line in table:
+            line = line.replace('\n', '')
+            line = line.replace('\t', '')
+            line = line.replace('\r', '')
+            line = unicodedata.normalize('NFKD', line).encode('ascii', 'ignore')
+            table2.append(line)
 
         thumb = response.xpath("//img/@src[contains(., 'species')]").extract_first()
         thumb = response.urljoin(thumb)
 
         species = response.xpath("//tr/td/center/i/a/text()").extract_first()
 
-        yield FishItem(species=species, image=[thumb], table=table)
+        yield FishItem(species=species, image=[thumb], table=table2)
 
     def spider_closed(self, spider):
         if spider is not self:
