@@ -2,7 +2,7 @@
 import numpy as np
 import cv2
 
-""" 
+"""
 Modified from: http://www.pyimagesearch.com/2014/12/01/complete-guide-building-image-search-engine-python-opencv/ (Adrian Rosebrock 2014)
 
 Meant to examine corners of image and center of image to determine whether the image has one central object (fish) on a relatively uniform background. Basic idea is that if the four corners are similar to each other and relatively dissimilar to the center of the image it's probably a fish photograph with the fish filling most of the image.
@@ -54,21 +54,8 @@ class ColorDescriptor:
 
 
 	def histogram(self, image, mask):
-		# extract a 3D HSV color histogram from the masked region of the image, then normalize it
+        # extract a 3D HSV color histogram from the masked region of the image, then normalize it
 		hist = cv2.calcHist([image], [0, 1, 2], mask, self.bins, [0, 180, 0, 256, 0, 256])
-		hist = cv2.normalize(hist).flatten() # represents relative percentages (scale-free rather than resolution dependent)
-
+		dst = hist
+		hist = cv2.normalize(hist, dst).flatten()
 		return hist
-
-
-
-
-
-
-
-
-
-
-
-
-

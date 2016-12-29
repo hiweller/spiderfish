@@ -1,12 +1,12 @@
-# spiderfish 0.0.1
+# spiderfish 0.0.2
 **Author**: Hannah Weller  
 **Email**: hannahiweller@gmail.com
 
 Pipeline for downloading and sorting Fishbase images.  
 
 # About
-Uses python and R to download all Fishbase images of a user-specified family, 
-then sorts out standardized (full body lateral view, relatively uniform background) 
+Uses python and R to download all Fishbase images of a user-specified family,
+then sorts out standardized (full body lateral view, relatively uniform background)
 images for easy digitization. The pipeline follows 4 steps after you give it a fish family:
 
 1) Downloads all images of that fish family that have confirmed identifications from Fishbase using Scrapy in python (http://scrapy.org/). Crawls species pages for photographs. See 'fishbase' folder.
@@ -15,7 +15,7 @@ images for easy digitization. The pipeline follows 4 steps after you give it a f
 
 3) Fetches a list of all species in family from Fishbase using the rfishbase package in R (https://github.com/ropensci/rfishbase).
 
-4) Outputs list of species in family missing images from fishbase (if any), list of species whose only images were rejected by the image classifier (not good candidates for morphometrics/digitization), and a list of which species correspond to which image names. 
+4) Outputs list of species in family missing images from fishbase (if any), list of species whose only images were rejected by the image classifier (not good candidates for morphometrics/digitization), and a list of which species correspond to which image names.
 
 The results are stored in a directory specified by the user, in a 'FamilyName/' folder. The folder has 3 subfolders: 'Pass', 'Fail', and 'All', which contain images passed by the classifier, images rejected by the classifier, and duplicates of all images in case you don't care about the classification, respectively. The folder also contains a JSON file with all the image URLs, image names, and species names, as well as the generated CSV files.
 
@@ -88,10 +88,12 @@ You can also call different pieces of the pipeline separately, for example if yo
 # Requirements
 * Python 2.7+
 * R 3.0+
-* OpenCV 2.4+ ([A nice installation tutorial for OpenCV 3](http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/), or just do `$ brew install opencv3 --with-contrib`)
+* OpenCV 3.0++ ([A nice installation tutorial for OpenCV 3](http://www.pyimagesearch.com/2015/06/15/install-opencv-3-0-and-python-2-7-on-osx/), or just do `$ brew install opencv3 --with-contrib`)
 * Scrapy 1.1+ ([Scrapy installation guide](http://doc.scrapy.org/en/latest/intro/install.html))
 * Rfishbase ([CRAN documentation](https://cran.r-project.org/web/packages/rfishbase/rfishbase.pdf))
 
+# Updates
+* 0.0.2 (Dec. 29, 2016): OpenCV3 compatibility
 
-
-
+# Troubleshooting
+* May need to run `$ pip install image` if getting 'No module named PIL' error
