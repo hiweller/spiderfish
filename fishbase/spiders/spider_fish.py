@@ -17,8 +17,8 @@ class FishSpider(scrapy.Spider):
     def __init__(self, family=None, *args, **kwargs):
         super(FishSpider, self).__init__(*args, **kwargs)
         dispatcher.connect(stop_reactor, signal=signals.spider_closed)
-        self.allowed_domains = ["fishbase.tw"]
-        self.start_urls = ["http://www.fishbase.tw/Nomenclature/FamilySearchList.php?Family="+family]
+        self.allowed_domains = ["fishbase.org"]
+        self.start_urls = ["http://www.fishbase.org/Nomenclature/FamilySearchList.php?Family="+family]
 
     def parse(self, response):
         # picks up all the links to species pages for this family
@@ -28,7 +28,7 @@ class FishSpider(scrapy.Spider):
             # changes out PHP query with permalink to species page
             parl = urlparse.urlparse(species_url)
             parl2 = parl.scheme + "://" + parl.netloc + re.sub("SpeciesSummary.php", "", parl.path) + parl.query[3:]
-            
+
             yield scrapy.Request(parl2, self.parse_species)
 
     def parse_species(self, response):
@@ -76,5 +76,3 @@ class FishSpider(scrapy.Spider):
     def spider_closed(self, spider):
         if spider is not self:
             return
-
-
